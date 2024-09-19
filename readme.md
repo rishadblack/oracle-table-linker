@@ -55,7 +55,7 @@ You can also use the Artisan command to automatically add the trait to your mode
 
 ```bash
 
-php artisan model:set-dblink YourModel
+php artisan model:dblink YourModel
 ```
 
 Replace YourModel with the name of your model. This command will add the HasDbLink trait to the specified model.
