@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class SetDbLinkCommand extends Command
 {
-    protected $signature = 'model:set-dblink {model}';
+    protected $signature = 'model:dblink {model}';
     protected $description = 'Add the HasDbLink trait to a specified model';
 
     public function handle(Filesystem $filesystem)
