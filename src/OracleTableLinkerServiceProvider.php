@@ -3,6 +3,7 @@
 namespace Rishadblack\OracleTableLinker;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Console\AboutCommand;
 use Rishadblack\OracleTableLinker\Commands\SetDbLinkCommand;
 
 class OracleTableLinkerServiceProvider extends ServiceProvider
@@ -14,7 +15,13 @@ class OracleTableLinkerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // dd('OracleTableLinkerServiceProvider');
+        if (class_exists(AboutCommand::class) && class_exists(\Composer\InstalledVersions::class)) {
+            AboutCommand::add('Oracle Table Linker', [
+                'Version' => 'v' . \Composer\InstalledVersions::getPrettyVersion('rishadblack/oracle-table-linker'),
+            ]);
+        }
+
+
         // Only register commands when the application is running in console
         if ($this->app->runningInConsole()) {
             $this->commands([
