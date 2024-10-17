@@ -142,14 +142,15 @@ trait HasDbLink
     /**
      * Hook into the update operation.
      *
-     * @param array $values
+     * @param array $attributes
+     * @param array $options
      * @return bool
      */
-    public function update(array $values)
+    public function update(array $attributes = [], array $options = [])
     {
         $this->initializeMainTable(); // Make sure table is initialized before updating
         static::$isWrite = true; // Mark this as a write operation
-        $result = parent::update($values); // Perform the actual update operation
+        $result = parent::update($attributes, $options); // Perform the actual update operation
         static::$isWrite = false; // Reset the write flag after the operation
         static::$firstCall = true; // Reset firstCall for future operations
 
